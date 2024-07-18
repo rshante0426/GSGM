@@ -46,7 +46,8 @@ overallError = falsePositives + falseNegatives;
 pixelCorrelationCoefficient = (truePositives + trueNegatives) / N;
 
 % Kappa coefficient calculation
-predictedAgreement = ((truePositives + falsePositives) * unchangedCount + (falseNegatives + trueNegatives) * changedCount) / N^2;
+predictedAgreement = ((truePositives + falsePositives) * (truePositives + falseNegatives) + ...
+       (falseNegatives + trueNegatives) * (falsePositives + trueNegatives)) / N^2;
 kappa = (pixelCorrelationCoefficient - predictedAgreement) / (1 - predictedAgreement);
 
 % F1 Score calculation
